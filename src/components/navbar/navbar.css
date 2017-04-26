@@ -1,0 +1,61 @@
+.menu {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+.menu__item {
+    position: relative;
+    display: block;
+    font-size: 16px;
+    padding-left: 30px;
+    margin-bottom: 20px;
+    background: no-repeat left center;
+}
+
+/*.menu__item_friends {*/
+/*background-image: url("../images/menu-icons/friends.png"); }*/
+/*.menu__item_photos {*/
+/*background-image: url("../images/menu-icons/Photos.png"); }*/
+/*.menu__item_videos {*/
+/*background-image: url("../images/menu-icons/Videos.png"); }*/
+/*.menu__item_music {*/
+/*background-image: url("../images/menu-icons/Music.png"); }*/
+/*.menu__item_messages {*/
+/*background-image: url("../images/menu-icons/messages.png"); }*/
+/*.menu__item_groups {*/
+/*background-image: url("../images/menu-icons/groups.png"); }*/
+/*.menu__item_feedback {*/
+/*background-image: url("../images/menu-icons/feedback.png"); }*/
+/*.menu__item_bookmarks {*/
+/*background-image: url("../images/menu-icons/bookmarks.png"); }*/
+/*.menu__item_settings {*/
+/*background-image: url("../images/menu-icons/settings.png"); }*/
+/*.menu__item_games {*/
+/*background-image: url("../images/menu-icons/games.png"); }*/
+/*.menu__item_cloud {*/
+/*background-image: url("../images/menu-icons/cloud.png"); }*/
+/*.menu__item_news {*/
+/*background-image: url("../images/menu-icons/News.png"); }*/
+/*.menu__item_documents {*/
+/*background-image: url("../images/menu-icons/documents.png"); }*/
+.menu__counter {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 1px 5px;
+    border-radius: 2px;
+    background: #4d76a3;
+}
+
+.menu__link {
+    text-decoration: none;
+    color: #c3d6ed;
+    font-weight: 400;
+    transition: all 0.3s;
+}
+
+.menu__link:hover {
+    color: white;
+    font-weight: 600;
+}
