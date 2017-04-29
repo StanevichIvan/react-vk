@@ -1,15 +1,13 @@
 import React, {Component} from 'react';
-import Navbar from "./components/navbar/navbar";
-import Header from "./components/header/header";
+import Routes from './router/router';
 
 class App extends Component {
 
     render() {
         return (
             <div>
-                <Header/>
-                <section class="content">
-                    <Navbar/>
+                <section className="content">
+                    <Routes/>
                 </section>
             </div>
         );

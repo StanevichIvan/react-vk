@@ -2,6 +2,9 @@ import React from 'react';
 import './header.css';
 
 export default class Header extends React.Component {
+    constructor() {
+        super();
+    }
 
     render() {
         return (<header className="header">
@@ -27,7 +30,7 @@ export default class Header extends React.Component {
                         <a className="action-button action-button_new-message"></a>
                     </div>
                     <div className="header__profile">
-                        <img className="profile__img" src="web/images/photo.png"/>
+                        <img className="profile__img" src=""/>
                         <span className="profile__name">Vyacheslav Kornilov</span>
                     </div>
                 </div>
