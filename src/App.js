@@ -1,17 +1,19 @@
 import React, {Component} from 'react';
 import Routes from './router/router';
+import Header from "./components/header/header";
 
 class App extends Component {
-    constructor(){
+    constructor() {
         super();
     }
 
     render() {
         return (
             <div>
-                <section className="content">
+                <Header/>
+                <div id="messages-content">
                     <Routes/>
-                </section>
+                </div>
             </div>
         );
     }

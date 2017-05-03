@@ -8,7 +8,7 @@ export default class Messages extends React.Component {
 
     render() {
         return (
-            <h1>Home component</h1>
+            <h1>Messages component</h1>
         );
     }
 }

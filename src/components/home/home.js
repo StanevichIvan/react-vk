@@ -5,13 +5,28 @@ export default class Home extends React.Component {
     //     super();
     // }
 
+    formSubmit(e) {
+        e.preventDefault();
+    }
+
     render() {
         return (
-            <h1>Home component</h1>
+            <form onSubmit={this.formSubmit}>
+                <h1>Enter credentials</h1>
+                <div>
+                    <label>
+                        Token
+                        <input type="text"/>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Current user ID
+                        <input type="text"/>
+                    </label>
+                </div>
+                <button type="submit">Start</button>
+            </form>
         );
     }
 }
-
-
-
-
