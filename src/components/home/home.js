@@ -1,9 +1,10 @@
 import React from 'react';
 
 export default class Home extends React.Component {
-    // constructor() {
-    //     super();
-    // }
+
+    constructor(props) {
+        super(props);
+    }
 
     formSubmit(e) {
         e.preventDefault();
@@ -12,6 +13,10 @@ export default class Home extends React.Component {
     render() {
         return (
             <form onSubmit={this.formSubmit}>
+                <a target="_blank"
+                   href="https://oauth.vk.com/authorize?client_id=5971236&redirect_uri=blank.html&scope=friends,messages,wall,video,docs,photos&response_type=token">
+                    Get credentials
+                </a>
                 <h1>Enter credentials</h1>
                 <div>
                     <label>

@@ -1,8 +1,9 @@
-import {AppDispatcher} from '../dispatcher/appDispatcher';
-import ActionTypes from '../actions/serverActions';
+import AppDispatcher from '../dispatcher/appDispatcher';
 
-export default ServerActions = {
-    getDialogs: () => {
-        AppDispatcher.handleServerAction();
+let ServerActions = {
+    getDialogs: (payload) => {
+        AppDispatcher.handleViewAction(payload);
     }
 };
+
+export default ServerActions;

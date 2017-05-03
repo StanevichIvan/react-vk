@@ -1,13 +1,12 @@
 import EventEmitter from 'events';
 import AppDispatcher from '../dispatcher/appDispatcher';
 import ActionTypes from '../constants/actionTypes';
+import ChatsService from "../services/chats";
 
 const CHANGE_EVENT = 'change';
-let messages = [];
-let ID;
-let type;
+let chats = [];
 
-class MessagesStore extends EventEmitter {
+class ChatsStore extends EventEmitter {
 
     emitChange() {
         this.emit(CHANGE_EVENT);
@@ -21,20 +20,24 @@ class MessagesStore extends EventEmitter {
         this.removeListener(CHANGE_EVENT, callback);
     }
 
-    getAllMessages() {
-        return messages;
+    getAllChats() {
+        return chats;
     }
 }
 
-const messagesStore = new MessagesStore();
+const chatsStore = new ChatsStore();
 
 AppDispatcher.register((payload) => {
     const type = payload.source;
+    const action = payload.action;
 
-    switch (type) {
+    switch (action.actionType) {
         case ActionTypes.GET_DIALOGS:
-            messagesStore.emitChange();
+            ChatsService.getDialogs({}).then((res) => {
+                chats = res;
+                chatsStore.emitChange();
+            });
     }
 });
 
-export default messagesStore;
+export default chatsStore;
