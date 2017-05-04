@@ -7,11 +7,11 @@ export default class ConversationList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {dialogs: []};
+        ChatListActions.getChatList();
     }
 
     componentDidMount() {
         ChatsStore.addChangeListener(this.reciveList.bind(this));
-        ChatListActions.getChatList();
     }
 
     componentWillUnmount() {
@@ -22,15 +22,19 @@ export default class ConversationList extends React.Component {
         this.setState({dialogs: ChatsStore.getAllChats()});
     }
 
-    render() {
+    chartSelect(dialog) {
+        console.log(dialog);
+    }
 
-        //TODO fix map bug
-        const list = this.state.dialogs.map((dialog) => {
-            <div className="conversation__message new">
+    render() {
+        const list = this.state.dialogs.map((dialog, i) => {
+            return (<div className="conversation__message new" onClick={() => {
+                this.chartSelect(dialog)
+            }} key={i}>
                 <img className="conversation__avatar" src={dialog.user.photo}/>
                 <div className="conversation__message-info">
                     <h4 className="conversation__name">{dialog.user.firstName}
-                    {dialog.user.lastName}</h4>
+                        {dialog.user.lastName}</h4>
                     <p className="conversation__message-text">{dialog.body}</p>
                 </div>
                 <div className="conversation__message-info">
@@ -42,10 +46,8 @@ export default class ConversationList extends React.Component {
                         <i className="conversation__attachment"/>
                     </p>
                 </div>
-            </div>
+            </div>)
         });
-
-        console.log(list);
 
         return (<div>{list}</div>);
     }
