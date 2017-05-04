@@ -1,5 +1,5 @@
-import Dialog from "../models/Dialog";
 import {API} from '../constants/api';
+import User from "../models/User";
 
 class UserService {
     constructor() {
@@ -16,7 +16,8 @@ class UserService {
      */
     getUsersProfiles(tokenCancel, listOfIds) {
         let xhr = new XMLHttpRequest();
-        xhr.open("GET", BASE_URL + 'method/users.get?access_token=' + TOKEN + "&fields=" + "photo_50" + "&user_ids=" + listOfIds);
+        xhr.open("GET", this.BASE_URL + 'method/users.get?access_token=' + this.TOKEN + "&fields="
+            + "photo_50&user_ids=" + listOfIds);
 
         return new Promise(function (resolve, reject) {
             xhr.onload = function () {
@@ -35,7 +36,7 @@ class UserService {
 
     getFriends(tokenCancel) {
         let xhr = new XMLHttpRequest();
-        xhr.open("GET", `${BASE_URL}method/friends.get?access_token=${TOKEN}&fields=photo_50,last_seen,nickname`);
+        xhr.open("GET", `${this.BASE_URL}method/friends.get?access_token=${this.TOKEN}&fields=photo_50,last_seen,nickname`);
 
         return new Promise(function (resolve, reject) {
             xhr.onload = function () {
@@ -56,7 +57,7 @@ class UserService {
     searchFriends (tokenCancel, name) {
 
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', `${BASE_URL}method/friends.search?access_token=${TOKEN}&q=${name}&fields=photo_50,last_seen,nickname`, true);
+        xhr.open('GET', `${this.BASE_URL}method/friends.search?access_token=${this.TOKEN}&q=${name}&fields=photo_50,last_seen,nickname`, true);
 
         return new Promise(function (resolve, reject) {
             xhr.onload = function () {

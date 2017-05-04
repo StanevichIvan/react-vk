@@ -130,7 +130,7 @@ class MessagesService {
      * @returns {*}
      */
     sendMessage(uid, message) {
-        return fetch(`${BASE_URL}method/messages.send?access_token=${this.TOKEN}&user_id=${uid}&message=${message}`,
+        return fetch(`${this.BASE_URL}method/messages.send?access_token=${this.TOKEN}&user_id=${uid}&message=${message}`,
             {method: 'POST'});
     }
 }
