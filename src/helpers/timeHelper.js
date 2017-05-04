@@ -1,3 +1,8 @@
+/**
+ * Conver unix time to view string
+ * @param unixTime
+ * @returns {string}
+ */
 const timeOffsetFromNow = function (unixTime) {
     let timeOffset = Date.now() - (unixTime * 1000);
     let minutesOffset = (timeOffset / (1000 * 60)).toFixed(0);
