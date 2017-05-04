@@ -28,7 +28,7 @@ export default class ConversationList extends React.Component {
             return (<div className="conversation__message new" onClick={() => {
                 this.chatSelect(dialog)
             }} key={i}>
-                <img className="conversation__avatar" src={dialog.user.photo}/>
+                <img className="conversation__avatar" src={dialog.user.photo} alt=""/>
                 <div className="conversation__message-info">
                     <h4 className="conversation__name">{dialog.user.firstName}
                         {dialog.user.lastName}</h4>

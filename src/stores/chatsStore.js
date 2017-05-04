@@ -28,7 +28,6 @@ class ChatsStore extends EventEmitter {
 const chatsStore = new ChatsStore();
 
 AppDispatcher.register((payload) => {
-    const type = payload.source;
     const action = payload.action;
 
     switch (action.actionType) {

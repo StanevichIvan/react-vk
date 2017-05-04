@@ -7,8 +7,6 @@ import Dialog from "../models/Dialog";
 
 const CHANGE_EVENT = 'change';
 let messages = [];
-let ID;
-let type;
 
 class MessagesStore extends EventEmitter {
 
@@ -33,7 +31,6 @@ const messagesStore = new MessagesStore();
 
 AppDispatcher.register((payload) => {
 
-    const type = payload.source;
     const actionType = payload.action.type;
     const messageData = payload.action.payload;
 

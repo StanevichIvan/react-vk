@@ -2,17 +2,14 @@ import React from 'react';
 import './header.css';
 
 export default class Header extends React.Component {
-    constructor() {
-        super();
-    }
 
     render() {
         return (<header className="header">
                 <div className="header__left-side">
-                    <a className="main-logo"></a>
+                    <a className="main-logo"/>
                     <div className="search">
                         <input placeholder="Search" className="search__input" type="text"/>
-                        <label className="search__label"></label>
+                        <label className="search__label"/>
                     </div>
                     <div className="header__controls">
                         <ul className="header__controls-list">
@@ -25,12 +22,12 @@ export default class Header extends React.Component {
                 </div>
                 <div className="header__right-side">
                     <div className="header__action-buttons">
-                        <a className="action-button action-button_reminder"></a>
-                        <a className="action-button action-button_new-post"></a>
-                        <a className="action-button action-button_new-message"></a>
+                        <a className="action-button action-button_reminder"/>
+                        <a className="action-button action-button_new-post"/>
+                        <a className="action-button action-button_new-message"/>
                     </div>
                     <div className="header__profile">
-                        <img className="profile__img" src=""/>
+                        <img className="profile__img" src="" alt=""/>
                         <span className="profile__name">Vyacheslav Kornilov</span>
                     </div>
                 </div>

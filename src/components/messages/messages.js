@@ -1,8 +1,6 @@
 import * as React from "react";
 import ConversationList from "./conversationsList";
 import Chat from "./chat/chat";
-import ServerActions from '../../actions/serverActions';
-import messagesStore from '../../stores/messagesStore';
 
 export default class Messages extends React.Component {
 

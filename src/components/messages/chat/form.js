@@ -1,6 +1,4 @@
 import * as React from "react";
-import AppDispatcher from '../../../dispatcher/appDispatcher';
-import ActionTypes from '../../../constants/actionTypes';
 import MessagesActions from "../../../actions/messagesActions";
 
 export default class Form extends React.Component {
@@ -14,7 +12,6 @@ export default class Form extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        debugger;
         this.setState({dialog: nextProps.dialog});
     }
 
@@ -42,7 +39,7 @@ export default class Form extends React.Component {
                     </div>
                     <button className="chart__input-button" type="submit">Send</button>
                 </div>
-                <img className="chart__form-avatar" src="${this.senderImg}"/>
+                <img className="chart__form-avatar" src={this.senderImg} alt=""/>
             </form>
         );
     }

@@ -65,7 +65,7 @@ class ChatsService {
 
     getUsersProfiles(tokenCancel, listOfIds) {
         let xhr = new XMLHttpRequest();
-        xhr.open("GET", this.BASE_URL + 'method/users.get?access_token=' + this.TOKEN + "&fields=" + "photo_50" + "&user_ids=" + listOfIds);
+        xhr.open("GET", this.BASE_URL + 'method/users.get?access_token=' + this.TOKEN + "&fields=photo_50&user_ids=" + listOfIds);
 
         return new Promise(function (resolve, reject) {
             xhr.onload = function () {
