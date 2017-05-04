@@ -1,31 +1,27 @@
 import * as React from "react";
 import AppDispatcher from '../../../dispatcher/appDispatcher';
 import ActionTypes from '../../../constants/actionTypes';
+import MessagesActions from "../../../actions/messagesActions";
 
 export default class Form extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            id: props.id
+            dialog: props.dialog
         };
         this.sendMessage = this.sendMessage.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({id: nextProps.id});
+        debugger;
+        this.setState({dialog: nextProps.dialog});
     }
 
     sendMessage(event) {
         event.preventDefault();
         const message = event.target.message.value;
-        AppDispatcher.handleViewAction({
-            type: ActionTypes.SEND_MESSAGE,
-            payload: {
-                id: this.state.id,
-                body: message
-            }
-        });
+        MessagesActions.sendMessage(this.state.dialog, message);
     }
 
     render() {
