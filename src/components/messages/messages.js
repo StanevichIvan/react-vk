@@ -8,33 +8,29 @@ export default class Messages extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state= {updateCount: 0};
+        this.state = {dialog: null};
     }
 
-    getInitialState() {
-        return {
-            messages: messagesStore.getAllMessages()
-        };
-    }
+    componentDidMount() {}
 
-    componentDidMount() {
-    }
+    componentWillUnmount() {}
 
-    componentWillUnmount() {
-    }
-
-    messagesStoreUpdate() {
-        this.setState({updateCount: ++this.state.updateCount});
+    chatSelect(selectedDialog) {
+        this.setState({
+            dialog: selectedDialog
+        });
     }
 
     render() {
         return (
             <div className="content__router-outlet router-outlet">
                 <div className="content__right-column">
-                    <ConversationList/>
+                    <ConversationList chatSelect={this.chatSelect.bind(this)}/>
                 </div>
                 <div className="content__text-container">
-                    <Chat/>
+                    {this.state.dialog ? (
+                        <Chat dialog={this.state.dialog}/>
+                    ) : (<div></div>)}
                 </div>
             </div>
         );

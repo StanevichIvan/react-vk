@@ -8,6 +8,7 @@ export default class ConversationList extends React.Component {
         super(props);
         this.state = {dialogs: []};
         ChatListActions.getChatList();
+        this.chatSelect = props.chatSelect;
     }
 
     componentDidMount() {
@@ -22,14 +23,10 @@ export default class ConversationList extends React.Component {
         this.setState({dialogs: ChatsStore.getAllChats()});
     }
 
-    chartSelect(dialog) {
-        console.log(dialog);
-    }
-
     render() {
         const list = this.state.dialogs.map((dialog, i) => {
             return (<div className="conversation__message new" onClick={() => {
-                this.chartSelect(dialog)
+                this.chatSelect(dialog)
             }} key={i}>
                 <img className="conversation__avatar" src={dialog.user.photo}/>
                 <div className="conversation__message-info">
