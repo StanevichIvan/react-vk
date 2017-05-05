@@ -36,12 +36,9 @@ AppDispatcher.register((payload) => {
 
     switch (actionType) {
         case ActionTypes.SEND_MESSAGE:
-            debugger;
             if (messageData.dialog instanceof Chat) {
-                debugger;
                 MessagesService.sendChatMessage({}, messageData.dialog.id, messageData.body);
             } else if (messageData.dialog instanceof Dialog) {
-                debugger;
                 MessagesService.sendMessage(messageData.dialog.user.id, messageData.body);
             }
             break;
