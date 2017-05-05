@@ -18,7 +18,7 @@ export default class Chat extends React.Component {
     render() {
         return (
             <secion className="chart">
-                <MessagesBox dialog={this.state.dialog}/>
+                <MessagesBox />
                 <Form dialog={this.state.dialog}/>
             </secion>
         );

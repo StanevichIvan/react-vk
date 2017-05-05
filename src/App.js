@@ -3,7 +3,12 @@ import Routes from './router/router';
 import Header from "./components/header/header";
 
 class App extends Component {
-   render() {
+    constructor(props) {
+        super(props);
+
+    }
+
+    render() {
         return (
             <div>
                 <Header/>

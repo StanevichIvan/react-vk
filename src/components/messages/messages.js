@@ -9,26 +9,20 @@ export default class Messages extends React.Component {
         this.state = {dialog: null};
     }
 
-    componentDidMount() {}
+    componentDidMount() {
+    }
 
-    componentWillUnmount() {}
-
-    chatSelect(selectedDialog) {
-        this.setState({
-            dialog: selectedDialog
-        });
+    componentWillUnmount() {
     }
 
     render() {
         return (
             <div className="content__router-outlet router-outlet">
                 <div className="content__right-column">
-                    <ConversationList chatSelect={this.chatSelect.bind(this)}/>
+                    <ConversationList/>
                 </div>
                 <div className="content__text-container">
-                    {this.state.dialog ? (
-                        <Chat dialog={this.state.dialog}/>
-                    ) : (<div></div>)}
+                    <Chat dialog={this.state.dialog}/>
                 </div>
             </div>
         );

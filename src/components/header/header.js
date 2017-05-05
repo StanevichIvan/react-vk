@@ -1,5 +1,4 @@
 import React from 'react';
-import './header.css';
 
 export default class Header extends React.Component {
 
@@ -28,7 +27,7 @@ export default class Header extends React.Component {
                     </div>
                     <div className="header__profile">
                         <img className="profile__img" src="" alt=""/>
-                        <span className="profile__name">Vyacheslav Kornilov</span>
+                        <span className="profile__name"></span>
                     </div>
                 </div>
             </header>

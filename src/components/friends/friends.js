@@ -19,7 +19,7 @@ export default class Friends extends React.Component {
     }
 
     componentWillUnmount() {
-        FriendsActions.removeChangeListener(this.getFriends);
+        // FriendsActions.removeChangeListener(this.getFriends);
     }
 
     getFriends() {

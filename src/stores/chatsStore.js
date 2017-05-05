@@ -5,6 +5,7 @@ import ChatsService from "../services/chats";
 
 const CHANGE_EVENT = 'change';
 let chats = [];
+let selectedChat = null;
 
 class ChatsStore extends EventEmitter {
 
@@ -23,6 +24,10 @@ class ChatsStore extends EventEmitter {
     getAllChats() {
         return chats;
     }
+
+    getSelectedChat() {
+        return selectedChat;
+    }
 }
 
 const chatsStore = new ChatsStore();
@@ -33,9 +38,17 @@ AppDispatcher.register((payload) => {
     switch (action.actionType) {
         case ActionTypes.GET_DIALOGS:
             ChatsService.getDialogs({}).then((res) => {
+                chats = null;
                 chats = res;
                 chatsStore.emitChange();
             });
+            break;
+    }
+
+    switch (action.type) {
+        case ActionTypes.SELECT_DIALOG:
+            selectedChat = action.payload;
+            break;
     }
 });
 

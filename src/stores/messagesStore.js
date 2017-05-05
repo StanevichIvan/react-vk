@@ -7,6 +7,7 @@ import Dialog from "../models/Dialog";
 
 const CHANGE_EVENT = 'change';
 let messages = [];
+let longPollCreated= false;
 
 class MessagesStore extends EventEmitter {
 
@@ -35,6 +36,7 @@ AppDispatcher.register((payload) => {
     const messageData = payload.action.payload;
 
     switch (actionType) {
+
         case ActionTypes.SEND_MESSAGE:
             if (messageData.dialog instanceof Chat) {
                 MessagesService.sendChatMessage({}, messageData.dialog.id, messageData.body);
@@ -46,17 +48,37 @@ AppDispatcher.register((payload) => {
             if (messageData.dialogType === 'Chat') {
                 MessagesService.getChatMessages({}, messageData.id)
                     .then((res) => {
+                        messages = null;
                         messages = res;
                         messagesStore.emitChange();
                     });
             } else if (messageData.dialogType === 'Dialog') {
                 MessagesService.getMessages({}, messageData.id)
                     .then((res) => {
+                        messages = null;
                         messages = res;
                         messagesStore.emitChange();
                     });
             }
+            break;
 
+        case ActionTypes.SELECT_DIALOG:
+
+            if (messageData instanceof Chat) {
+                MessagesService.getChatMessages({}, messageData.id)
+                    .then((res) => {
+                        messages = null;
+                        messages = res;
+                        messagesStore.emitChange();
+                    });
+            } else if (messageData instanceof Dialog) {
+                MessagesService.getMessages({}, messageData.user.id)
+                    .then((res) => {
+                        messages = null;
+                        messages = res;
+                        messagesStore.emitChange();
+                    });
+            }
             break;
     }
 

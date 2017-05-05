@@ -12,7 +12,7 @@ class ChatListActions {
 
     selectChat(response) {
         AppDispatcher.handleViewAction({
-            actionType: ActionTypes.SELECT_DIALOG,
+            type: ActionTypes.SELECT_DIALOG,
             payload: response
         });
     }

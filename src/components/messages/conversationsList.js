@@ -8,7 +8,6 @@ export default class ConversationList extends React.Component {
         super(props);
         this.state = {dialogs: []};
         ChatListActions.getChatList();
-        this.chatSelect = props.chatSelect;
         this.reciveList = this.reciveList.bind(this);
     }
 
@@ -22,6 +21,10 @@ export default class ConversationList extends React.Component {
 
     reciveList() {
         this.setState({dialogs: ChatsStore.getAllChats()});
+    }
+
+    chatSelect(dialog) {
+        ChatListActions.selectChat(dialog);
     }
 
     render() {

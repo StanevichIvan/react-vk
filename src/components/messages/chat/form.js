@@ -1,5 +1,6 @@
 import * as React from "react";
 import MessagesActions from "../../../actions/messagesActions";
+import ChatsStore from '../../../stores/chatsStore';
 
 export default class Form extends React.Component {
 
@@ -18,7 +19,8 @@ export default class Form extends React.Component {
     sendMessage(event) {
         event.preventDefault();
         const message = event.target.message.value;
-        MessagesActions.sendMessage(this.state.dialog, message);
+        const dialog = ChatsStore.getSelectedChat();
+        MessagesActions.sendMessage(dialog, message);
     }
 
     render() {
