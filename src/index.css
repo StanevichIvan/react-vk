@@ -1063,3 +1063,7 @@ body {
     margin: 0;
     padding: 5px 0;
 }
+
+.friends-list-container {
+    width: 100%;
+}

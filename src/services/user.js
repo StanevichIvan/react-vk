@@ -53,7 +53,6 @@ class UserService {
         });
     };
 
-
     searchFriends (tokenCancel, name) {
 
         let xhr = new XMLHttpRequest();
