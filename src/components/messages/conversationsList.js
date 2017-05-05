@@ -9,14 +9,15 @@ export default class ConversationList extends React.Component {
         this.state = {dialogs: []};
         ChatListActions.getChatList();
         this.chatSelect = props.chatSelect;
+        this.reciveList = this.reciveList.bind(this);
     }
 
     componentDidMount() {
-        ChatsStore.addChangeListener(this.reciveList.bind(this));
+        ChatsStore.addChangeListener(this.reciveList);
     }
 
     componentWillUnmount() {
-        ChatsStore.removeChangeListener(this.reciveList.bind(this));
+        ChatsStore.removeChangeListener(this.reciveList);
     }
 
     reciveList() {
