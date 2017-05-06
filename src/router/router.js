@@ -16,7 +16,8 @@ export default class Routes extends React.Component {
 
                         <Route exact path="/" component={Home}/>
                         <Route path="/messages" component={Messages}/>
-                        <Route path="/photo" component={Photos}/>
+                        <Route path="/photo/:id" component={Photos}/>
+                        {/*<Route path="/photo" component={Photos}/>*/}
                         {/*<Route path="/news" component={News}/>*/}
                         <Route path="/friends" component={Friends}/>
                     </section>

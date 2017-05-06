@@ -1,17 +1,27 @@
 import AppDispatcher from '../dispatcher/appDispatcher';
 import ActionTypes from "../constants/actionTypes";
 
-let MessagesActions = {
+let PhotosActions = {
 
-    getMessages: (id, dialogType) => {
+    getAlbums: (id) => {
         AppDispatcher.handleViewAction({
-            type: ActionTypes.GET_MESSAGES,
+            type: ActionTypes.GET_ALBUMS,
             payload: {
-                id: id,
-                dialogType: dialogType
+                id: id
+            }
+        });
+    },
+
+    getAlbumPhotos: (userId, albumId) => {
+        AppDispatcher.handleViewAction({
+            type: ActionTypes.GET_ALBUM_PHOTOS,
+            payload: {
+                userId: userId,
+                albumId: albumId
             }
         });
     }
+
 };
 
-export default MessagesActions;
+export default PhotosActions;

@@ -4,20 +4,25 @@ import Slider from "./slider";
 
 export default class Photos extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        console.log(props.match.params.id);
         this.state = {
-            id: '12312312423'
+            id: props.match.params.id || '11797372'
         };
     }
 
+    componentWillReceiveProps(nextProps) {
+        this.setState({id: nextProps.match.params.id});
+        debugger;
+    }
 
     render() {
         return (
-            <h1>Photos component
+            <div>
                 <Albums id={this.state.id}/>
                 <Slider />
-            </h1>
+            </div>
         );
     }
 }

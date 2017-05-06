@@ -7,7 +7,7 @@ class PhotosService {
     getPhotos(tokenCancel, uid) {
         let id = uid;
         if (!id)
-            id = userId;
+            id = API.userId;
 
         let xhr = new XMLHttpRequest();
         xhr.open('GET', `${API.BASE_URL}method/photos.get?access_token=${API.TOKEN}&owner_id=${id}&album_id=wall`, true);
@@ -78,3 +78,6 @@ class PhotosService {
         });
     };
 }
+
+const photosServicre = new PhotosService();
+export default  photosServicre;

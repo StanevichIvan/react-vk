@@ -16,9 +16,6 @@ export default class Navbar extends React.Component {
                     <li className="menu__item menu__item_messages" id="message-nav-button">
                         <Link to="/messages" className="menu__link">Messages</Link>
                     </li>
-                    {/*<li className="menu__item menu__item_news">*/}
-                        {/*<Link to='/news' href="#" className="menu__link">News</Link>*/}
-                    {/*</li>*/}
                 </ul>
             </menu>);
     }

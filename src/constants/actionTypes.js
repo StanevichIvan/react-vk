@@ -7,7 +7,8 @@ const ActionTypes = {
     GET_FRIENDS_LIST: 'GET_FRIENDS_LIST',
     START_LONG_POLL: 'START_LONG_POLL',
     GET_ALBUMS: 'GET_ALBUMS',
-    GET_PHOTOS: 'GET_PHOTOS'
+    GET_PHOTOS: 'GET_PHOTOS',
+    GET_ALBUM_PHOTOS: 'GET_ALBUM_PHOTOS'
 };
 
 export default ActionTypes;

@@ -1,5 +1,6 @@
 export default class Album {
-    constructor() {
+
+    constructor(obj) {
         this.title = obj.title || '';
         this.id = obj.aid || '';
         this.thumb_id = obj.thumb_id || '';
