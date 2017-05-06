@@ -6,7 +6,6 @@ export default class Photos extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log(props.match.params.id);
         this.state = {
             id: props.match.params.id || '11797372'
         };
@@ -14,7 +13,6 @@ export default class Photos extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         this.setState({id: nextProps.match.params.id});
-        debugger;
     }
 
     render() {
