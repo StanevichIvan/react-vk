@@ -20,8 +20,14 @@ let PhotosActions = {
                 albumId: albumId
             }
         });
-    }
+    },
 
+    clearPhotosStorage: () => {
+        AppDispatcher.handleViewAction({
+            type: ActionTypes.CLEAR_PHOTOS_STORAGE,
+            payload: {}
+        });
+    }
 };
 
 export default PhotosActions;

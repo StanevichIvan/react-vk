@@ -18,6 +18,11 @@ export default class Albums extends React.Component {
         PhotosStore.addChangeListener(this.getAlbums);
     }
 
+    componentWillUnmount() {
+        PhotosStore.addChangeListener(this.getAlbums);
+        PhotosActions.clearPhotosStorage();
+    }
+
     getAlbums() {
         this.setState({
             id: this.state.id,

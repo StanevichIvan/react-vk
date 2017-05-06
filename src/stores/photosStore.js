@@ -28,6 +28,10 @@ class PhotosStore extends EventEmitter {
     getAllPhotos() {
         return photos;
     }
+
+    clearPhotos() {
+        photos = [];
+    }
 }
 
 const photosStore = new PhotosStore();
@@ -64,6 +68,11 @@ AppDispatcher.register((payload) => {
                     photosStore.emitChange();
                 });
 
+            break;
+
+        case ActionTypes.CLEAR_PHOTOS_STORAGE:
+            photos = [];
+            photosStore.emitChange();
             break;
     }
 
