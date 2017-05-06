@@ -3,6 +3,7 @@ import Dialog from "../models/Dialog";
 import UserService from './user';
 
 class MessagesService {
+
     constructor() {
         this.TOKEN = API.TOKEN;
         this.BASE_URL = API.BASE_URL;
