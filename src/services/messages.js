@@ -13,7 +13,7 @@ class MessagesService {
     getMessages(tokenCancel, uid) {
         let xhr = new XMLHttpRequest();
         xhr.open("GET",
-            `${this.BASE_URL}method/messages.getHistory?access_token=${this.TOKEN}&count=200&time_offset=0&user_id=${uid}`);
+            `${this.BASE_URL}method/messages.getHistory?access_token=${this.TOKEN}&rev=0&count=200&time_offset=0&user_id=${uid}`);
 
         let messages;
 
@@ -61,7 +61,7 @@ class MessagesService {
         let xhr = new XMLHttpRequest();
         const chatID = +2000000000 + +id;
         xhr.open("GET",
-            `${this.BASE_URL}method/messages.getHistory?access_token=${this.TOKEN}&peer_id=${chatID}&count=200&v=5.38`);
+            `${this.BASE_URL}method/messages.getHistory?access_token=${this.TOKEN}&rev=0&peer_id=${chatID}&count=200&v=5.38`);
 
         let messages;
 

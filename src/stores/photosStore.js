@@ -43,14 +43,6 @@ AppDispatcher.register((payload) => {
     const data = payload.action.payload;
 
     switch (actionType) {
-        case ActionTypes.GET_PHOTOS:
-
-            PhotosService.getPhotos({}, 1112312341)
-                .then((res) => {
-
-                });
-
-            break;
 
         case ActionTypes.GET_ALBUM_PHOTOS:
 
@@ -62,6 +54,7 @@ AppDispatcher.register((payload) => {
             break;
 
         case ActionTypes.GET_ALBUMS:
+
             PhotosService.getAlbums({}, data.id)
                 .then((res) => {
                     albums = res;
@@ -71,6 +64,7 @@ AppDispatcher.register((payload) => {
             break;
 
         case ActionTypes.CLEAR_PHOTOS_STORAGE:
+
             photos = [];
             photosStore.emitChange();
             break;

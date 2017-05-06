@@ -4,10 +4,11 @@ import ActionTypes from '../constants/actionTypes';
 import MessagesService from '../services/messages';
 import Chat from "../models/Chat";
 import Dialog from "../models/Dialog";
+import {API} from "../constants/api";
 
 const CHANGE_EVENT = 'change';
 let messages = [];
-let longPollCreated= false;
+let longPollCreated = false;
 
 class MessagesStore extends EventEmitter {
 
@@ -48,14 +49,12 @@ AppDispatcher.register((payload) => {
             if (messageData.dialogType === 'Chat') {
                 MessagesService.getChatMessages({}, messageData.id)
                     .then((res) => {
-                        messages = null;
                         messages = res;
                         messagesStore.emitChange();
                     });
             } else if (messageData.dialogType === 'Dialog') {
                 MessagesService.getMessages({}, messageData.id)
                     .then((res) => {
-                        messages = null;
                         messages = res;
                         messagesStore.emitChange();
                     });
@@ -67,18 +66,35 @@ AppDispatcher.register((payload) => {
             if (messageData instanceof Chat) {
                 MessagesService.getChatMessages({}, messageData.id)
                     .then((res) => {
-                        messages = null;
                         messages = res;
                         messagesStore.emitChange();
                     });
             } else if (messageData instanceof Dialog) {
                 MessagesService.getMessages({}, messageData.user.id)
                     .then((res) => {
-                        messages = null;
                         messages = res;
                         messagesStore.emitChange();
                     });
             }
+            break;
+
+        case ActionTypes.LONG_POLL_MESSAGE:
+            let arr = [];
+
+            messageData.forEach((item) => {
+                let obj = {
+                    body: item[6],
+                    user: item[3],
+                    out: 1,
+                    from_id: item[3]
+                };
+                // out or in message, vk api specification
+                obj.out = item[4] === parseInt(API.userId, 10) ? 0 : 1;
+                arr.push(new Dialog(obj));
+            });
+
+            messages = messages.concat(arr);
+            messagesStore.emitChange();
             break;
     }
 

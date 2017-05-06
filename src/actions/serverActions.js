@@ -1,4 +1,5 @@
 import AppDispatcher from '../dispatcher/appDispatcher';
+import ActionTypes from "../constants/actionTypes";
 
 let ServerActions = {
     getDialogs: (payload) => {
@@ -7,6 +8,13 @@ let ServerActions = {
 
     longPollNewAction: (payload) => {
         AppDispatcher.handleServerAction(payload);
+    },
+
+    newMessage: (payload) => {
+        AppDispatcher.handleServerAction({
+            type: ActionTypes.LONG_POLL_MESSAGE,
+            payload: payload
+        });
     }
 };
 

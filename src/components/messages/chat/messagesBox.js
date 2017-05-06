@@ -23,7 +23,7 @@ export default class MessagesBox extends React.Component {
     getMessages() {
         this.setState({
             dialog: ChatsStore.getSelectedChat(),
-            messages: MessagesStorage.getAllMessages().reverse()
+            messages: MessagesStorage.getAllMessages()
         });
     }
 
