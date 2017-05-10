@@ -1,5 +1,6 @@
 import {API} from '../constants/api';
 import Dialog from "../models/Dialog";
+import Document from "../models/Document";
 import UserService from './user';
 
 class MessagesService {
@@ -155,6 +156,57 @@ class MessagesService {
         return fetch(`${this.BASE_URL}method/messages.send?access_token=${this.TOKEN}&user_id=${uid}&message=${message}`,
             {method: 'POST'});
     }
+
+    getDocs(tokenCancel) {
+
+        let xhr = new XMLHttpRequest();
+
+        return new Promise(function (resolve, reject) {
+            xhr.onload = function () {
+                let json = JSON.parse(xhr.responseText).response;
+                let arr = [];
+
+                json.forEach((item) => {
+                    if (typeof item === 'object') {
+                        arr.push(new Document(item));
+                    }
+                });
+
+                resolve(arr);
+            };
+
+            tokenCancel.cancel = function () {
+                xhr.abort();
+                reject(new Error('Cancelled'));
+            };
+
+            xhr.onerror = reject;
+            xhr.open('GET', `${API.BASE_URL}method/docs.get?access_token=${API.TOKEN}`, true);
+            xhr.send();
+        });
+    };
+
+    sendDocMessage(tokenCancel, doc, id) {
+
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', `${API.BASE_URL}method/messages.send?access_token=${API.TOKEN}&user_id=${id}&attachment=doc${doc.ownerID}_${doc.mediaID}`, true);
+
+        return new Promise(function (resolve, reject) {
+            xhr.onload = function () {
+                let json = JSON.parse(xhr.responseText).response;
+
+                resolve(json);
+            };
+
+            tokenCancel.cancel = function () {
+                xhr.abort();
+                reject(new Error('Cancelled'));
+            };
+
+            xhr.onerror = reject;
+            xhr.send();
+        });
+    };
 }
 
 const messagesService = new MessagesService();

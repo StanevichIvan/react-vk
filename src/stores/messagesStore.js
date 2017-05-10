@@ -9,6 +9,7 @@ import {API} from "../constants/api";
 const CHANGE_EVENT = 'change';
 let messages = [];
 let dialog = {};
+let documents = [];
 
 class MessagesStore extends EventEmitter {
 
@@ -26,6 +27,10 @@ class MessagesStore extends EventEmitter {
 
     getAllMessages() {
         return messages;
+    }
+
+    getDocuments() {
+        return documents;
     }
 }
 
@@ -122,6 +127,21 @@ AppDispatcher.register((payload) => {
                         }
                     }
                 });
+            break;
+
+        case ActionTypes.GET_DOCUMENTS:
+
+            MessagesService.getDocs({})
+                .then((res) => {
+                    documents = res;
+                    messagesStore.emitChange();
+                });
+            break;
+
+        case ActionTypes.SEND_DOCUMENT:
+
+            if (dialog instanceof Dialog)
+                MessagesService.sendDocMessage({}, messageData.body, dialog.user.id);
             break;
 
         default:

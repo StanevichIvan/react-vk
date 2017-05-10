@@ -16,6 +16,23 @@ let MessagesActions = {
         });
     },
 
+    getDocuments: ()=> {
+        AppDispatcher.handleViewAction({
+            type: ActionTypes.GET_DOCUMENTS,
+            payload: {}
+        });
+    },
+
+    sendDocument: (dialog, message) => {
+        AppDispatcher.handleViewAction({
+            type: ActionTypes.SEND_DOCUMENT,
+            payload: {
+                dialog: dialog,
+                body: message
+            }
+        });
+    },
+
     getMessages: (id, dialogType) => {
         AppDispatcher.handleViewAction({
             type: ActionTypes.GET_MESSAGES,

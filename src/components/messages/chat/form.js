@@ -1,6 +1,7 @@
 import * as React from "react";
 import MessagesActions from "../../../actions/messagesActions";
 import ChatsStore from '../../../stores/chatsStore';
+import UploadedDocuments from "./uploadedDocuments";
 
 export default class Form extends React.Component {
 
@@ -32,12 +33,7 @@ export default class Form extends React.Component {
                         <div className="chart__file-upload">
                             <input id="file-upload" name="image" type="file"/>
                         </div>
-                        <div id="docs-select" className="docs-select chart__docs-select">
-                            <div className="docs-select__list"/>
-                            <button className="docs-select__button" type="button">Attach uploaded
-                                file
-                            </button>
-                        </div>
+                        <UploadedDocuments />
                     </div>
                     <button className="chart__input-button" type="submit">Send</button>
                 </div>

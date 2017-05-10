@@ -1045,7 +1045,6 @@ body {
 }
 
 .docs-select__list {
-    display: none;
     position: absolute;
     height: 300px;
     width: 200px;
