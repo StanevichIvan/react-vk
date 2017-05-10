@@ -17,7 +17,7 @@ export default class Friend extends React.Component {
 
          if(this.state.redirectToPhotos) {
              let path = `/photo/${this.state.user.id}`;
-             return (<Redirect to={path}/>);
+             return (<Redirect to={path} push/>);
              // return (<Link to={path}/>);
          }
 
