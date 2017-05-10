@@ -5,20 +5,20 @@ export default class Friend extends React.Component {
 
     constructor(props) {
         super();
-        this.state = {user: props.user , redirectToPhotos : false};
+        this.state = {user: props.user, redirectToPhotos: false};
         this.redirectToPhotos = this.redirectToPhotos.bind(this);
     }
 
     redirectToPhotos() {
-        this.setState({user: this.state.user , redirectToPhotos : true});
+        this.setState({user: this.state.user, redirectToPhotos: true});
     }
 
     render() {
 
-         if(this.state.redirectToPhotos) {
-             let path = `/photo/${this.state.user.id}`;
-             return (<Redirect to={path} push/>);
-         }
+        if (this.state.redirectToPhotos) {
+            let path = `/photo/${this.state.user.id}`;
+            return (<Redirect to={path} push/>);
+        }
 
         if (typeof this.state.user !== 'object')
             return (<div/>);

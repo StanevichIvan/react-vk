@@ -17,6 +17,10 @@ export default class MessagesBox extends React.Component {
         MessagesStorage.addChangeListener(this.getMessages);
     }
 
+    componentWillUnmount() {
+        MessagesStorage.removeChangeListener(this.getMessages);
+    }
+
     getMessages() {
         this.setState({
             dialog: ChatsStore.getSelectedChat(),
@@ -34,7 +38,7 @@ export default class MessagesBox extends React.Component {
                      }
                  }}>
 
-                {this.state.messages.map((item, i)=> {
+                {this.state.messages.map((item, i) => {
                     return (<div className="chart-message" key={i}>
                         <div className="chart-message__avatar">
                             <div className="chart-message__avatar-content active">
@@ -56,7 +60,7 @@ export default class MessagesBox extends React.Component {
                 })}
 
                 {/*{this.state.messages.map((message, i) => {*/}
-                    {/*return (<Message message={message} key={i}/>);*/}
+                {/*return (<Message message={message} key={i}/>);*/}
                 {/*})}*/}
             </div>
         );

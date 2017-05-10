@@ -11,12 +11,12 @@ export default class Header extends React.Component {
                         <label className="search__label"/>
                     </div>
                     <div className="header__controls">
-                        <ul className="header__controls-list">
-                            <li className="controls-list__item"><a href="#">People</a></li>
-                            <li className="controls-list__item"><a href="#">Games</a></li>
-                            <li className="controls-list__item"><a href="#">Music</a></li>
-                            <li className="controls-list__item"><a href="#">Help</a></li>
-                        </ul>
+                        {/*<ul className="header__controls-list">*/}
+                            {/*<li className="controls-list__item"><a href="#">People</a></li>*/}
+                            {/*<li className="controls-list__item"><a href="#">Games</a></li>*/}
+                            {/*<li className="controls-list__item"><a href="#">Music</a></li>*/}
+                            {/*<li className="controls-list__item"><a href="#">Help</a></li>*/}
+                        {/*</ul>*/}
                     </div>
                 </div>
                 <div className="header__right-side">
