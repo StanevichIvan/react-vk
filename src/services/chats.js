@@ -7,7 +7,7 @@ class ChatsService {
         this.TOKEN = API.TOKEN;
         this.BASE_URL = API.BASE_URL;
         this.userId = API.userId;
-        window.localStorage.setItem('currentUser', JSON.stringify({id: this.userId}));
+        // localStorage.setItem('currentUser', JSON.stringify({id: this.userId}));
     }
 
     getDialogs(tokenCancel) {
