@@ -111,17 +111,20 @@ AppDispatcher.register((payload) => {
                     }
 
                     if (dialog instanceof Chat && updatedDialog instanceof Chat) {
-                        if(updatedDialog.id === dialog.id) {
+                        if (updatedDialog.id === dialog.id) {
                             messages = messages.concat(arr);
                             messagesStore.emitChange();
                         }
-                    } else if(dialog instanceof Dialog && updatedDialog instanceof Dialog) {
-                        if(updatedDialog.fromID === dialog.user.id) {
+                    } else if (dialog instanceof Dialog && updatedDialog instanceof Dialog) {
+                        if (updatedDialog.fromID === dialog.user.id) {
                             messages = messages.concat(arr);
                             messagesStore.emitChange();
                         }
                     }
                 });
+            break;
+
+        default:
             break;
     }
 

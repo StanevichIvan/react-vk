@@ -68,6 +68,9 @@ AppDispatcher.register((payload) => {
             photos = [];
             photosStore.emitChange();
             break;
+
+        default:
+            break;
     }
 
 });

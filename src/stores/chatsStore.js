@@ -43,11 +43,17 @@ AppDispatcher.register((payload) => {
                 chatsStore.emitChange();
             });
             break;
+
+        default:
+            break;
     }
 
     switch (action.type) {
         case ActionTypes.SELECT_DIALOG:
             selectedChat = action.payload;
+            break;
+
+        default:
             break;
     }
 });

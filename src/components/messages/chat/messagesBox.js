@@ -1,9 +1,6 @@
 import * as React from "react";
-import Message from "./message";
 import MessagesStorage from '../../../stores/messagesStore';
 import ChatsStore from '../../../stores/chatsStore';
-import MessagesActions from "../../../actions/messagesActions";
-import Dialog from "../../../models/Dialog";
 
 export default class MessagesBox extends React.Component {
 

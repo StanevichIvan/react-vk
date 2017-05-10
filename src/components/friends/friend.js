@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Redirect, Link} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 
 export default class Friend extends React.Component {
 
@@ -18,7 +18,6 @@ export default class Friend extends React.Component {
          if(this.state.redirectToPhotos) {
              let path = `/photo/${this.state.user.id}`;
              return (<Redirect to={path} push/>);
-             // return (<Link to={path}/>);
          }
 
         if (typeof this.state.user !== 'object')
@@ -26,7 +25,7 @@ export default class Friend extends React.Component {
 
         return (
             <div className="conversation__message new" onClick={this.redirectToPhotos}>
-                <img className="conversation__avatar" src={this.state.user.photo}/>
+                <img className="conversation__avatar" src={this.state.user.photo} alt=""/>
                 <div className="conversation__message-info">
                     <h4 className="conversation__name">{this.state.user.firstName} {this.state.user.lastName}</h4>
                 </div>

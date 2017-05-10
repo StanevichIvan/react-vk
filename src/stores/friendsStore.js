@@ -39,6 +39,9 @@ AppDispatcher.register((payload) => {
                     friendsStore.emitChange();
                 });
             break;
+
+        default:
+            break;
     }
 });
 
