@@ -13,7 +13,7 @@ class MessagesService {
     getMessages(tokenCancel, uid) {
         let xhr = new XMLHttpRequest();
         xhr.open("GET",
-            `${this.BASE_URL}method/messages.getHistory?access_token=${this.TOKEN}&rev=0&count=200&time_offset=0&user_id=${uid}`);
+            `${this.BASE_URL}method/messages.getHistory?access_token=${this.TOKEN}&rev=1&count=200&time_offset=0&user_id=${uid}`);
 
         let messages;
 
@@ -61,7 +61,7 @@ class MessagesService {
         let xhr = new XMLHttpRequest();
         const chatID = +2000000000 + +id;
         xhr.open("GET",
-            `${this.BASE_URL}method/messages.getHistory?access_token=${this.TOKEN}&rev=0&peer_id=${chatID}&count=200&v=5.38`);
+            `${this.BASE_URL}method/messages.getHistory?access_token=${this.TOKEN}&rev=1&peer_id=${chatID}&count=200&v=5.38`);
 
         let messages;
 
@@ -103,6 +103,27 @@ class MessagesService {
             return messages;
         });
     }
+
+    getMessageById(tokenCancel, ids) {
+
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", `${API.BASE_URL}method/messages.getById?access_token=${API.TOKEN}&message_ids=${ids}`);
+
+        return new Promise(function (resolve, reject) {
+            xhr.onload = function () {
+                let json = JSON.parse(xhr.responseText).response;
+                resolve(json);
+            };
+
+            tokenCancel.cancel = function () {
+                xhr.abort();
+                reject(new Error("Cancelled"));
+            };
+            xhr.onerror = reject;
+            xhr.send();
+        });
+    };
+
 
     sendChatMessage(tokenCancel, id, message) {
 

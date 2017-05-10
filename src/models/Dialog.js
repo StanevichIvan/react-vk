@@ -9,6 +9,7 @@ export default class Dialog {
         this.time = item.date ? timeHelper(item.date) : '';
         this.fromID = item.from_id || '';
         this.img = '';
+        this.messageId = item.messageId || '';
 
         if (item.attachment) {
             this.attach = item.attachment || null;

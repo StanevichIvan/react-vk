@@ -8,7 +8,7 @@ import {API} from "../constants/api";
 
 const CHANGE_EVENT = 'change';
 let messages = [];
-let longPollCreated = false;
+let dialog = {};
 
 class MessagesStore extends EventEmitter {
 
@@ -68,12 +68,14 @@ AppDispatcher.register((payload) => {
                     .then((res) => {
                         messages = res;
                         messagesStore.emitChange();
+                        dialog = messageData;
                     });
             } else if (messageData instanceof Dialog) {
                 MessagesService.getMessages({}, messageData.user.id)
                     .then((res) => {
                         messages = res;
                         messagesStore.emitChange();
+                        dialog = messageData;
                     });
             }
             break;
@@ -86,15 +88,40 @@ AppDispatcher.register((payload) => {
                     body: item[6],
                     user: item[3],
                     out: 1,
-                    from_id: item[3]
+                    from_id: item[3],
+                    messageId: item[1]
                 };
                 // out or in message, vk api specification
                 obj.out = item[4] === parseInt(API.userId, 10) ? 0 : 1;
                 arr.push(new Dialog(obj));
             });
 
-            messages = messages.concat(arr);
-            messagesStore.emitChange();
+            let updatedDialog;
+
+            MessagesService.getMessageById({}, arr[0].messageId)
+                .then((res) => {
+                    let resObj = res[1];
+
+                    if (resObj.hasOwnProperty('chat_id')) {
+                        resObj.from_id = res[1].uid;
+                        updatedDialog = new Chat(resObj);
+                    } else {
+                        resObj.from_id = res[1].uid;
+                        updatedDialog = new Dialog(resObj);
+                    }
+
+                    if (dialog instanceof Chat && updatedDialog instanceof Chat) {
+                        if(updatedDialog.id === dialog.id) {
+                            messages = messages.concat(arr);
+                            messagesStore.emitChange();
+                        }
+                    } else if(dialog instanceof Dialog && updatedDialog instanceof Dialog) {
+                        if(updatedDialog.fromID === dialog.user.id) {
+                            messages = messages.concat(arr);
+                            messagesStore.emitChange();
+                        }
+                    }
+                });
             break;
     }
 
