@@ -70,12 +70,17 @@ export default class ConversationUsersSelect extends React.Component {
                 </button>
                 { this.state.selected.length !== 0 ? (<button onClick={this.startChat}>Start chat</button>) : <div/>}
 
-                { this.state.show
-                    ? (this.state.users.map((user, i) => {
+                { this.state.show ?
+                    (this.state.users.map((user, i) => {
                         return (
                             <div key={i}>
                                 <label>
-                                    <input type="checkbox" id={user.id} value={user.id} onChange={ (e) => {
+                                    <input ref={(el) => {
+                                        if (el && this.state.selected.includes(user.id)) {
+                                            el.checked = true;
+                                        }
+                                    }}
+                                           type="checkbox" id={user.id} value={user.id} onChange={ (e) => {
                                         this.inputChange(e, user);
                                     }}/>
                                     {`${user.firstName} ${user.lastName}`}
