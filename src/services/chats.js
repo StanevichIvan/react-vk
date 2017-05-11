@@ -81,6 +81,29 @@ class ChatsService {
             xhr.send();
         });
     }
+
+    createMultiuserChat(tokenCancel, ids) {
+
+        let listOfIds = ids.toString();
+
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", API.BASE_URL + 'method/messages.createChat?access_token=' + API.TOKEN + "&user_ids=" + listOfIds);
+
+        return new Promise(function (resolve, reject) {
+            xhr.onload = function () {
+                let json = JSON.parse(xhr.responseText).response;
+                resolve(json);
+            };
+
+            tokenCancel.cancel = function () {
+                xhr.abort();
+                reject(new Error("Cancelled"));
+            };
+            xhr.onerror = reject;
+            xhr.send();
+        });
+    };
+
 }
 
 const chatsService = new ChatsService();

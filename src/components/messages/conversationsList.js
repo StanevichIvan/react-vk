@@ -1,6 +1,7 @@
 import * as React from "react";
 import ChatsStore from '../../stores/chatsStore';
 import ChatListActions from '../../actions/chatListActions';
+import ConversationUsersSelect from "./conversationUsersSelect";
 
 export default class ConversationList extends React.Component {
 
@@ -50,6 +51,9 @@ export default class ConversationList extends React.Component {
             </div>)
         });
 
-        return (<div>{list}</div>);
+        return (<div>
+            <ConversationUsersSelect/>
+            {list}
+        </div>);
     }
 }

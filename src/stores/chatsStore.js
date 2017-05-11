@@ -38,7 +38,6 @@ AppDispatcher.register((payload) => {
     switch (action.actionType) {
         case ActionTypes.GET_DIALOGS:
             ChatsService.getDialogs({}).then((res) => {
-                chats = null;
                 chats = res;
                 chatsStore.emitChange();
             });
@@ -51,6 +50,14 @@ AppDispatcher.register((payload) => {
     switch (action.type) {
         case ActionTypes.SELECT_DIALOG:
             selectedChat = action.payload;
+            break;
+
+        case ActionTypes.START_MULTI_USER_CHAT:
+            ChatsService.createMultiuserChat({}, action.payload);
+            ChatsService.getDialogs({}).then((res) => {
+                chats = res;
+                chatsStore.emitChange();
+            });
             break;
 
         default:

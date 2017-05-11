@@ -16,6 +16,13 @@ class ChatListActions {
             payload: response
         });
     }
+
+    startMultichat(list){
+        AppDispatcher.handleViewAction({
+            type: ActionTypes.START_MULTI_USER_CHAT,
+            payload: list
+        });
+    }
 }
 
 const chatListActions = new ChatListActions();
