@@ -11,6 +11,7 @@ export default class Friends extends React.Component {
             friends: []
         };
         this.getFriends = this.getFriends.bind(this);
+        this.search = this.search.bind(this);
     }
 
     componentDidMount() {
@@ -28,10 +29,25 @@ export default class Friends extends React.Component {
         });
     }
 
+    search() {
+        const searchText = this.input.value;
+        FriendsActions.searchfriends(searchText);
+    }
+
     render() {
+        let friends = this.state.friends.slice(1);
+        console.log(friends);
+
         return (
             <div className="friends-list-container">
-                {this.state.friends.map((item, i) => {
+                <form>
+                    <input ref={(input) => {
+                        this.input = input;
+                    }} type="text"/>
+                    <input onClick={this.search} type="button" name="search" value="Search"/>
+                </form>
+
+                {friends.map((item, i) => {
                     return <Friend user={item} key={i}/>
                 })
                 }

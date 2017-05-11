@@ -30,10 +30,20 @@ const friendsStore = new FriendsStore();
 AppDispatcher.register((payload) => {
 
     const actionType = payload.action.actionType;
+    const data = payload.action.payload;
 
     switch (actionType) {
         case ActionTypes.GET_FRIENDS:
             UserService.getFriends({})
+                .then((res) => {
+                    friends = res;
+                    friendsStore.emitChange();
+                });
+            break;
+
+        case ActionTypes.SEARCH_FRIENDS:
+            debugger;
+            UserService.searchFriends({} , data )
                 .then((res) => {
                     friends = res;
                     friendsStore.emitChange();

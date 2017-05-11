@@ -9,6 +9,13 @@ class FriendsActions {
             payload: response
         });
     }
+
+    searchfriends(data) {
+        AppDispatcher.handleViewAction({
+            actionType: ActionTypes.SEARCH_FRIENDS,
+            payload: data
+        });
+    }
 }
 
 const friendsActions = new FriendsActions();

@@ -9,6 +9,10 @@ export default class Friend extends React.Component {
         this.redirectToPhotos = this.redirectToPhotos.bind(this);
     }
 
+    componentWillReceiveProps(props) {
+        this.setState({user: props.user, redirectToPhotos: false});
+    }
+
     redirectToPhotos() {
         this.setState({user: this.state.user, redirectToPhotos: true});
     }
