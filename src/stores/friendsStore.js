@@ -42,7 +42,6 @@ AppDispatcher.register((payload) => {
             break;
 
         case ActionTypes.SEARCH_FRIENDS:
-            debugger;
             UserService.searchFriends({} , data )
                 .then((res) => {
                     friends = res;

@@ -29,18 +29,18 @@ export default class Friends extends React.Component {
         });
     }
 
-    search() {
+    search(event) {
+        event.preventDefault();
         const searchText = this.input.value;
         FriendsActions.searchfriends(searchText);
     }
 
     render() {
         let friends = this.state.friends.slice(1);
-        console.log(friends);
 
         return (
             <div className="friends-list-container">
-                <form>
+                <form onSubmit={this.search}>
                     <input ref={(input) => {
                         this.input = input;
                     }} type="text"/>
