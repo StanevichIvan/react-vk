@@ -1,0 +1,15 @@
+exports[`Friends rendering renders correctly 1`] = `
+<div
+  className="friends-list-container">
+  <form
+    onSubmit={[Function]}>
+    <input
+      type="text" />
+    <input
+      name="search"
+      onClick={[Function]}
+      type="button"
+      value="Search" />
+  </form>
+</div>
+`;

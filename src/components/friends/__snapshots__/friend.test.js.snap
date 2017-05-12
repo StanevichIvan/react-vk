@@ -1,0 +1,34 @@
+exports[`Friend component Сorrectly rendering 1`] = `
+<div
+  className="conversation__message new"
+  onClick={[Function]}>
+  <img
+    alt=""
+    className="conversation__avatar"
+    src="https://d75ljpmh88vxs.cloudfront.net/web/images/lens_flare_inspiration_square.jpg" />
+  <div
+    className="conversation__message-info">
+    <h4
+      className="conversation__name">
+      Игнат
+       
+      Игнатов
+    </h4>
+  </div>
+  <div
+    className="conversation__message-info">
+    <h4
+      className="conversation__name conversation__name_right">
+      <span
+        className="conversation__message-count" />
+      <span
+        className="conversation__message-time" />
+    </h4>
+    <p
+      className="conversation__message-text conversation__name_right">
+      <i
+        className="conversation__attachment" />
+    </p>
+  </div>
+</div>
+`;
