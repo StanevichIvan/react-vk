@@ -17,7 +17,7 @@ describe('App dispatcher dispatching', () => {
         };
 
         token = AppDispatcher.register((payload) => {
-            expect(payload.source).toBe('SERVER_ACTION');
+            expect(payload.source).toBe(ActionTypes.SERVER_ACTION);
             expect(payload.action).toMatchObject(action);
         });
 
@@ -31,7 +31,7 @@ describe('App dispatcher dispatching', () => {
         };
 
         token = AppDispatcher.register((payload) => {
-            expect(payload.source).toBe('VIEW_ACTION');
+            expect(payload.source).toBe(ActionTypes.VIEW_ACTION);
             expect(payload.action).toMatchObject(action);
         });
 
