@@ -2,7 +2,7 @@ import AppDispatcher from './appDispatcher';
 import ActionTypes from '../constants/actionTypes';
 let token = null;
 
-describe('App dispatcher test', () => {
+describe('App dispatcher dispatching', () => {
 
     beforeEach(() => {
         if (token !== null) {
