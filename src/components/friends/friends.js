@@ -10,6 +10,7 @@ export default class Friends extends React.Component {
         this.state = {
             friends: []
         };
+
         this.getFriends = this.getFriends.bind(this);
         this.search = this.search.bind(this);
     }
@@ -20,7 +21,7 @@ export default class Friends extends React.Component {
     }
 
     componentWillUnmount() {
-        // FriendsActions.removeChangeListener(this.getFriends);
+        FriendsStore.removeChangeListener(this.getFriends);
     }
 
     getFriends() {
@@ -30,7 +31,9 @@ export default class Friends extends React.Component {
     }
 
     search(event) {
+
         event.preventDefault();
+
         const searchText = this.input.value;
         FriendsActions.searchfriends(searchText);
     }
